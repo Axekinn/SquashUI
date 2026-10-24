@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+.venv*/
+build/
+dist/
+tools/
+*.part
+squashui_*.json
+squashui_torrents/
+ps3_names.json
+pkg_logs/

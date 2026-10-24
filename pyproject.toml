@@ -1,0 +1,24 @@
+[project]
+name = "squashui"
+version = "10.1.0"
+description = "Batch disc image compressor, extractor and organiser"
+requires-python = ">=3.10"
+dependencies = ["PySide6>=6.7", "py7zr>=0.21"]
+
+[project.optional-dependencies]
+torrents = ["libtorrent"]
+dev = ["pyinstaller>=6.6", "pytest>=8", "ruff>=0.5"]
+
+[project.gui-scripts]
+squashui = "squashui.__main__:run"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 130
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "B", "UP"]
+ignore = ["E501", "E701", "E702", "B008", "UP007", "UP035"]

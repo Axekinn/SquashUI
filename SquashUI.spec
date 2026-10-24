@@ -11,11 +11,11 @@ from PyInstaller.utils.hooks import collect_all
 onefile = os.environ.get("SQUASHUI_ONEFILE") == "1"
 
 datas, binaries, hiddenimports = [], [], []
-for package in ("py7zr", "libtorrent"):  # py7zr pulls in compression back-ends PyInstaller can't see; libtorrent is optional
+for package in ("py7zr", "libtorrent"):  # py7zr pulls in compression back-ends PyInstaller can't see
     try:
         d, b, h = collect_all(package)
-    except Exception:
-        continue
+    except Exception as exc:
+        raise SystemExit(f"Build needs '{package}' in the build venv: pip install {package}  ({exc})")
     datas += d
     binaries += b
     hiddenimports += h
